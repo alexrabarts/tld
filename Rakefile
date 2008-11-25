@@ -4,7 +4,7 @@ require 'rubygems'
 require 'hoe'
 require './lib/tld.rb'
 
-Hoe.new('TLD', TLD::VERSION) do |p|
+Hoe.new('tld', TLD::VERSION) do |p|
   # p.rubyforge_name = 'TLDx' # if different than lowercase project name
   p.developer('Alex Rabarts', 'alexrabarts@gmail.com')
 end
