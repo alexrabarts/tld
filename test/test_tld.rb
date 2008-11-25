@@ -36,6 +36,11 @@ class TestTld < Test::Unit::TestCase
     assert_equal 'Business', TLD.find('biz').name
   end
 
+  def test_com_should_map_to_empty_currency_not_comoros
+    assert_equal [], TLD.find('com').currencies
+    assert_nil TLD.find('com').currency
+  end
+
   def test_unknown_tld
     assert_raises TLD::UnknownTldError do
       TLD.find('foo')
