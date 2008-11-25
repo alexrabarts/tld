@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.description = %q{Provides meta information for Internet Top Level Domains (TLDs) such as a descriptive name, associated currency code and the TLD category.}
   s.email = ["alexrabarts@gmail.com"]
   s.extra_rdoc_files = ["History.txt", "Manifest.txt", "README.txt"]
-  s.files = ["History.txt", "Manifest.txt", "README.txt", "Rakefile", "lib/tld.rb", "lib/tld/cc_tld.rb", "lib/tld/currency.rb", "lib/tld/generic_tld.rb", "lib/tld/infrastructure_tld.rb", "lib/tld/name.rb", "lib/tld/pseudo_tld.rb", "lib/tld/reserved_tld.rb", "lib/tld/retired_tld.rb", "lib/tld/sponsored_tld.rb", "lib/tld/tld.rb", "rakelib/cultivate.rake", "rakelib/tld.rake", "rakelib/tld.rb", "rakelib/tld.rb.erb", "test/test_tld.rb", "tld.gemspec"]
+  s.files = ["History.txt", "Manifest.txt", "README.txt", "Rakefile", "lib/tld.rb", "lib/tld/alpha3.rb", "lib/tld/cc_tld.rb", "lib/tld/currency.rb", "lib/tld/generic_tld.rb", "lib/tld/infrastructure_tld.rb", "lib/tld/name.rb", "lib/tld/pseudo_tld.rb", "lib/tld/reserved_tld.rb", "lib/tld/retired_tld.rb", "lib/tld/sponsored_tld.rb", "lib/tld/tld.rb", "rakelib/cultivate.rake", "rakelib/tld.rake", "rakelib/tld.rb", "rakelib/tld.rb.erb", "test/test_tld.rb", "tld.gemspec"]
   s.has_rdoc = true
   s.rdoc_options = ["--main", "README.txt"]
   s.require_paths = ["lib"]

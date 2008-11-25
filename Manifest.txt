@@ -3,6 +3,7 @@ Manifest.txt
 README.txt
 Rakefile
 lib/tld.rb
+lib/tld/alpha3.rb
 lib/tld/cc_tld.rb
 lib/tld/currency.rb
 lib/tld/generic_tld.rb

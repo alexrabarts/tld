@@ -35,6 +35,10 @@ class TLD
     self.class.currencies
   end
 
+  def alpha3
+    self.class.alpha3
+  end
+
   class << self
     attr_accessor :tld
 
@@ -55,6 +59,10 @@ class TLD
 
     def currencies
       Currency.find(self)
+    end
+
+    def alpha3
+      Alpha3.find(self)
     end
 
     def main_currency

@@ -7,9 +7,6 @@ descriptive name, associated currency code and the TLD category.
 
 == SYNOPSIS:
 
-  # Find the ISO 4217 currency code for a ccTld
-  TLD.find('au').currency # => 'AUD'
-
   # Find a descriptive name
   TLD.find('au').name  # => "Australia"
   TLD.find('biz').name # => "Business"
@@ -18,6 +15,16 @@ descriptive name, associated currency code and the TLD category.
   # reserved, retired or sponsored)
   TLD.find('au').type  # => :cc
   TLD.find('biz').type # => :generic
+
+  # Find the ISO 4217 currency code for a ccTld
+  TLD.find('au').currency # => 'AUD'
+
+  # Find the ISO 3166-1 alpha-3 country code for a ccTld
+  TLD.find('uk').alpha3 # => 'GBR'
+
+  # Search with a hostname or URL
+  TLD.find('foo.com.au').name            # => "Australia"
+  TLD.find('http://foo.com.au/bar').name # => "Australia"
 
 == REQUIREMENTS:
 
