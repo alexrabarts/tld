@@ -1,0 +1,12 @@
+class TLD
+  class <%= klass %> < TLD
+    def type
+      :<%= type %>
+    end
+    <% tlds.each do |tld| -%>
+    class <%= tld %> < <%= klass %> #:nodoc:
+      self.tld = %q{<%= tld.downcase %>}
+    end
+    <% end -%>
+  end # end <%= klass %>
+end # end TLD
