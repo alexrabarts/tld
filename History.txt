@@ -1,3 +1,7 @@
+=== 0.2.0 / 2008-11-25
+
+* ISO 3166-1 alpha-3 country codes made available
+
 === 0.1.1 / 2008-11-25
 
 Bug fixes:

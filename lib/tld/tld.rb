@@ -1,7 +1,7 @@
 require 'singleton'
 
 class TLD
-  VERSION = '0.1.1'
+  VERSION = '0.2.0'
 
   MAP = {
     :ac => 'sh',
