@@ -7,6 +7,9 @@ require './lib/tld.rb'
 Hoe.new('tld', TLD::VERSION) do |p|
   # p.rubyforge_name = 'TLDx' # if different than lowercase project name
   p.developer('Alex Rabarts', 'alexrabarts@gmail.com')
+  p.extra_deps = [
+    ['alexrabarts-iso_country_codes']
+  ]
 end
 
 # Load extra rake tasks.
