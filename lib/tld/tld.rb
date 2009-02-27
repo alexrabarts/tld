@@ -71,8 +71,8 @@ class TLD
 
     alias_method :currency, :main_currency
 
-    def find(str)
-      str.downcase!
+    def find(orig)
+      str = orig.downcase
       str.sub!(/^\w+:\/\//, '') # Strip protocol
       str = str.split('/').first if str.match(/\//) # Throw away anything after a slash
       str = str.split('.').last if str.match(/\./) # Take the last one of foo.bar.baz
