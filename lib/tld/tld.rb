@@ -76,7 +76,7 @@ class TLD
     alias_method :currency, :main_currency
 
     def find(str)
-      host     = Addressable::URI.heuristic_parse(str).normalized_host.to_s
+      host     = normalized_host(str)
       host     = str.downcase if host == ''
       last     = host.match(/\./) ? host.split('.').last : host # Take the last one of foo.bar.baz
       instance = all.select { |t| t.tld == last }.first
@@ -86,8 +86,19 @@ class TLD
       instance
     end
 
+    def has_valid_tld?(str)
+      str = normalized_host(str)
+      str.match(/\./) ? self.valid?(str.split('.').last) : self.valid?(str)
+    end
+
     def valid?(tld)
       !!all.select { |t| t.to_s == tld.downcase }.first
+    end
+
+    private
+
+    def normalized_host(str)
+      Addressable::URI.heuristic_parse(str).normalized_host.to_s
     end
   end
 end

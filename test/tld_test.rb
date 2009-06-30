@@ -68,4 +68,14 @@ class TestTld < Test::Unit::TestCase
   should 'confirm that TLD is invalid' do
     assert_equal false, TLD.valid?('not-a-tld')
   end
+
+  should 'confirm that hostname has a valid TLD' do
+    assert TLD.has_valid_tld?('foo.com.au')
+    assert TLD.has_valid_tld?('http://foo.com.au/bar')
+  end
+
+  should 'confirm that hostname does not have a valid TLD' do
+    assert_equal false, TLD.has_valid_tld?('foo.bar')
+    assert_equal false, TLD.has_valid_tld?('http://foo.bar')
+  end
 end
