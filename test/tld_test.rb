@@ -42,6 +42,13 @@ class TestTld < Test::Unit::TestCase
     assert_equal 'GBR', TLD.find('uk').alpha3
   end
 
+  should 'get TLD as a string' do
+    tld = TLD.find('au')
+
+    assert_equal 'au', tld.to_s
+    assert_equal tld.tld, tld.to_s
+  end
+
   should 'com should map to empty currency (not Comoros)' do
     assert_equal [], TLD.find('com').currencies
     assert_nil TLD.find('com').currency

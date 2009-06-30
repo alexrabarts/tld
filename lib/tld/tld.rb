@@ -13,6 +13,10 @@ class TLD
 
   class UnknownTldError < StandardError; end
 
+  def to_s
+    tld
+  end
+
   def tld
     self.class.tld
   end
