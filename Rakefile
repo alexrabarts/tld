@@ -1,20 +1,55 @@
-# -*- ruby -*-
-
-require 'rubygems'
-require 'hoe'
+require 'rake'
 require './lib/tld.rb'
 
-Hoe.new('tld', TLD::VERSION) do |p|
-  # p.rubyforge_name = 'TLDx' # if different than lowercase project name
-  p.developer('Alex Rabarts', 'alexrabarts@gmail.com')
-  p.extra_deps = [
-    ['alexrabarts-iso_country_codes']
-  ]
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |s|
+    s.name = 'tld'
+    s.summary = %Q{
+      Provides meta information for Internet Top Level Domains (TLDs).
+    }
+    s.email = "alexrabarts@gmail.com"
+    s.homepage = "http://github.com/alexrabarts/tld"
+    s.description = "Top-level domain library"
+    s.authors = ["alex"]
+    s.add_dependency 'alexrabarts-iso_country_codes', ['>=0.2.1']
+  end
+rescue LoadError
+  puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
 end
 
-# Load extra rake tasks.
-tasks_path = File.join(File.dirname(__FILE__), 'rakelib')
-rake_files = Dir["#{tasks_path}/*.rake"]
-rake_files.each{|rake_file| load rake_file}
+require 'rake/rdoctask'
+Rake::RDocTask.new do |rdoc|
+  rdoc.rdoc_dir = 'rdoc'
+  rdoc.title = 'tld'
+  rdoc.options << '--line-numbers' << '--inline-source'
+  rdoc.rdoc_files.include('README*')
+  rdoc.rdoc_files.include('lib/**/*.rb')
+end
 
-# vim: syntax=Ruby
+require 'rake/testtask'
+Rake::TestTask.new(:test) do |t|
+  t.libs << 'lib' << 'test'
+  t.pattern = 'test/**/*_test.rb'
+  t.verbose = false
+end
+
+begin
+  require 'rcov/rcovtask'
+  Rcov::RcovTask.new do |t|
+    t.libs << 'test'
+    t.test_files = FileList['test/**/*_test.rb']
+    t.verbose = true
+  end
+rescue LoadError
+  puts "RCov is not available. In order to run rcov, you must: sudo gem install spicycode-rcov"
+end
+
+begin
+  require 'cucumber/rake/task'
+  Cucumber::Rake::Task.new(:features)
+rescue LoadError
+  puts "Cucumber is not available. In order to run features, you must: sudo gem install cucumber"
+end
+
+task :default => :test
