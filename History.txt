@@ -1,3 +1,12 @@
+=== 0.4.0 / 2009-06-30
+
+* You can now call to_s on a TLD object, which will return the canonical name
+  (i.e. the lowercase extension).  This saves you writing code like
+  "foo.co.#{tld.tld}".  Instead, now you can write "foo.co.#{tld}".
+* Addressable::URI is now used for parsing hostnames instead of custom regexes.
+* Tests now run under Shoulda
+* The gem is now built under Jeweler instead of Hoe
+
 === 0.2.1 / 2009-02-27
 
 * Bugfix: original strings left intact
