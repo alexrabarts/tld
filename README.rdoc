@@ -29,8 +29,12 @@ descriptive name, associated currency code and the TLD category.
   TLD.find('http://foo.com.au/bar').name # => "Australia"
 
   # Check if a TLD is valid
-  TLD.valid?('au') #  => true
+  TLD.valid?('au')  #  => true
   TLD.valid?('foo') # => false
+
+  # Check if a hostname has a valid TLD
+  TLD.has_valid_tld?('foo.com.au') # => true
+  TLD.has_valid_tld?('foo.bar')    # => false
 
 == REQUIREMENTS:
 
