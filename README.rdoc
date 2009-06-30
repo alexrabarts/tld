@@ -7,6 +7,8 @@ descriptive name, associated currency code and the TLD category.
 
 == SYNOPSIS:
 
+  require 'tld'
+
   # Find a descriptive name
   TLD.find('au').name  # => "Australia"
   TLD.find('biz').name # => "Business"
@@ -26,19 +28,17 @@ descriptive name, associated currency code and the TLD category.
   TLD.find('foo.com.au').name            # => "Australia"
   TLD.find('http://foo.com.au/bar').name # => "Australia"
 
+  # Check if a TLD is valid
+  TLD.valid?('au') #  => true
+  TLD.valid?('foo') # => false
+
 == REQUIREMENTS:
 
 iso_country_codes gem (see http://github.com/alexrabarts/iso_country_codes)
 
 == INSTALL:
 
-* Via git:
-
-    git clone git://github.com/alexrabarts/tld.git
-
-* Via gem:
-
-    gem install alexrabarts-tld -s http://gems.github.com
+  gem install alexrabarts-tld -s http://gems.github.com
 
 == LICENSE:
 

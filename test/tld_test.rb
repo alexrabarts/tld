@@ -59,4 +59,13 @@ class TestTld < Test::Unit::TestCase
       TLD.find('foo')
     end
   end
+
+  should 'confirm that TLD is valid' do
+    assert TLD.valid?('au')
+    assert TLD.valid?('AU')
+  end
+
+  should 'confirm that TLD is invalid' do
+    assert_equal false, TLD.valid?('not-a-tld')
+  end
 end

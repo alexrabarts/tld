@@ -85,5 +85,9 @@ class TLD
 
       instance
     end
+
+    def valid?(tld)
+      !!all.select { |t| t.to_s == tld.downcase }.first
+    end
   end
 end
