@@ -1,3 +1,8 @@
+=== 0.6.0 / 2009-06-30
+
+* TLD.has_valid_tld? method added, which allows you to check if a given
+  hostname has a valid TLD.
+
 === 0.5.0 / 2009-06-30
 
 * TLD.valid? method added, which allows you to check if a given string is
