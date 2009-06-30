@@ -1,4 +1,6 @@
 require 'singleton'
+require 'rubygems'
+require 'addressable/uri'
 
 class TLD
   MAP = {
@@ -73,12 +75,11 @@ class TLD
 
     alias_method :currency, :main_currency
 
-    def find(orig)
-      str = orig.downcase
-      str.sub!(/^\w+:\/\//, '') # Strip protocol
-      str = str.split('/').first if str.match(/\//) # Throw away anything after a slash
-      str = str.split('.').last if str.match(/\./) # Take the last one of foo.bar.baz
-      instance = all.select { |t| t.tld == str }.first
+    def find(str)
+      host     = Addressable::URI.heuristic_parse(str).normalized_host.to_s
+      host     = str.downcase if host == ''
+      last     = host.match(/\./) ? host.split('.').last : host # Take the last one of foo.bar.baz
+      instance = all.select { |t| t.tld == last }.first
 
       raise UnknownTldError, "TLD '#{str}' unkown." if instance.nil?
 

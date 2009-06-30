@@ -13,6 +13,7 @@ begin
     s.description = "Top-level domain library"
     s.authors = ["alex"]
     s.add_dependency 'alexrabarts-iso_country_codes', ['>=0.2.1']
+    s.add_dependency 'addressable'
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
