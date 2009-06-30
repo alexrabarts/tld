@@ -1,3 +1,8 @@
+=== 0.5.0 / 2009-06-30
+
+* TLD.valid? method added, which allows you to check if a given string is
+  a valid TLD.
+
 === 0.4.0 / 2009-06-30
 
 * You can now call to_s on a TLD object, which will return the canonical name
