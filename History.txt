@@ -1,3 +1,8 @@
+=== 0.6.1 / 2010-05-20
+
+* Now raises TLD::UnkownTldError instead of Addressable::URI::InvalidURIError
+  if input string cannot be parsed by Addressable::URI
+
 === 0.6.0 / 2009-06-30
 
 * TLD.has_valid_tld? method added, which allows you to check if a given
