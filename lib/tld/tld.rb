@@ -98,7 +98,7 @@ class TLD
     private
 
     def normalized_host(str)
-      Addressable::URI.heuristic_parse(str).normalized_host.to_s
+      Addressable::URI.heuristic_parse(str).normalized_host.to_s rescue str
     end
   end
 end

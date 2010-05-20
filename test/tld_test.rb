@@ -78,4 +78,10 @@ class TestTld < Test::Unit::TestCase
     assert_equal false, TLD.has_valid_tld?('foo.bar')
     assert_equal false, TLD.has_valid_tld?('http://foo.bar')
   end
+
+  should 'raise UnknownTldError if string cannot be parsed by Addressable::URI' do
+    assert_raises TLD::UnknownTldError do
+      TLD.find('foo:')
+    end
+  end
 end
