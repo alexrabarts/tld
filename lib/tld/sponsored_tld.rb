@@ -42,5 +42,8 @@ class TLD
     class TRAVEL < SponsoredTld #:nodoc:
       self.tld = %q{travel}
     end
+    class XXX < SponsoredTld #:nodoc:
+      self.tld = %q{xxx}
+    end
   end # end SponsoredTld
 end # end TLD

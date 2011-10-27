@@ -3,9 +3,6 @@ class TLD
     def type
       :cc
     end
-    class AC < CcTld #:nodoc:
-      self.tld = %q{ac}
-    end
     class AD < CcTld #:nodoc:
       self.tld = %q{ad}
     end
@@ -26,9 +23,6 @@ class TLD
     end
     class AM < CcTld #:nodoc:
       self.tld = %q{am}
-    end
-    class AN < CcTld #:nodoc:
-      self.tld = %q{an}
     end
     class AO < CcTld #:nodoc:
       self.tld = %q{ao}
@@ -84,6 +78,9 @@ class TLD
     class BJ < CcTld #:nodoc:
       self.tld = %q{bj}
     end
+    class BL < CcTld #:nodoc:
+      self.tld = %q{bl}
+    end
     class BM < CcTld #:nodoc:
       self.tld = %q{bm}
     end
@@ -93,6 +90,9 @@ class TLD
     class BO < CcTld #:nodoc:
       self.tld = %q{bo}
     end
+    class BQ < CcTld #:nodoc:
+      self.tld = %q{bq}
+    end
     class BR < CcTld #:nodoc:
       self.tld = %q{br}
     end
@@ -101,6 +101,9 @@ class TLD
     end
     class BT < CcTld #:nodoc:
       self.tld = %q{bt}
+    end
+    class BV < CcTld #:nodoc:
+      self.tld = %q{bv}
     end
     class BW < CcTld #:nodoc:
       self.tld = %q{bw}
@@ -156,6 +159,9 @@ class TLD
     class CV < CcTld #:nodoc:
       self.tld = %q{cv}
     end
+    class CW < CcTld #:nodoc:
+      self.tld = %q{cw}
+    end
     class CX < CcTld #:nodoc:
       self.tld = %q{cx}
     end
@@ -192,6 +198,9 @@ class TLD
     class EG < CcTld #:nodoc:
       self.tld = %q{eg}
     end
+    class EH < CcTld #:nodoc:
+      self.tld = %q{eh}
+    end
     class ER < CcTld #:nodoc:
       self.tld = %q{er}
     end
@@ -200,9 +209,6 @@ class TLD
     end
     class ET < CcTld #:nodoc:
       self.tld = %q{et}
-    end
-    class EU < CcTld #:nodoc:
-      self.tld = %q{eu}
     end
     class FI < CcTld #:nodoc:
       self.tld = %q{fi}
@@ -414,6 +420,9 @@ class TLD
     class ME < CcTld #:nodoc:
       self.tld = %q{me}
     end
+    class MF < CcTld #:nodoc:
+      self.tld = %q{mf}
+    end
     class MG < CcTld #:nodoc:
       self.tld = %q{mg}
     end
@@ -528,6 +537,9 @@ class TLD
     class PL < CcTld #:nodoc:
       self.tld = %q{pl}
     end
+    class PM < CcTld #:nodoc:
+      self.tld = %q{pm}
+    end
     class PN < CcTld #:nodoc:
       self.tld = %q{pn}
     end
@@ -588,6 +600,9 @@ class TLD
     class SI < CcTld #:nodoc:
       self.tld = %q{si}
     end
+    class SJ < CcTld #:nodoc:
+      self.tld = %q{sj}
+    end
     class SK < CcTld #:nodoc:
       self.tld = %q{sk}
     end
@@ -600,17 +615,23 @@ class TLD
     class SN < CcTld #:nodoc:
       self.tld = %q{sn}
     end
+    class SO < CcTld #:nodoc:
+      self.tld = %q{so}
+    end
     class SR < CcTld #:nodoc:
       self.tld = %q{sr}
+    end
+    class SS < CcTld #:nodoc:
+      self.tld = %q{ss}
     end
     class ST < CcTld #:nodoc:
       self.tld = %q{st}
     end
-    class SU < CcTld #:nodoc:
-      self.tld = %q{su}
-    end
     class SV < CcTld #:nodoc:
       self.tld = %q{sv}
+    end
+    class SX < CcTld #:nodoc:
+      self.tld = %q{sx}
     end
     class SY < CcTld #:nodoc:
       self.tld = %q{sy}
@@ -672,8 +693,8 @@ class TLD
     class UG < CcTld #:nodoc:
       self.tld = %q{ug}
     end
-    class UK < CcTld #:nodoc:
-      self.tld = %q{uk}
+    class UM < CcTld #:nodoc:
+      self.tld = %q{um}
     end
     class US < CcTld #:nodoc:
       self.tld = %q{us}
@@ -714,6 +735,9 @@ class TLD
     class YE < CcTld #:nodoc:
       self.tld = %q{ye}
     end
+    class YT < CcTld #:nodoc:
+      self.tld = %q{yt}
+    end
     class ZA < CcTld #:nodoc:
       self.tld = %q{za}
     end
@@ -722,51 +746,6 @@ class TLD
     end
     class ZW < CcTld #:nodoc:
       self.tld = %q{zw}
-    end
-    class UM < CcTld #:nodoc:
-      self.tld = %q{um}
-    end
-    class BL < CcTld #:nodoc:
-      self.tld = %q{bl}
-    end
-    class EH < CcTld #:nodoc:
-      self.tld = %q{eh}
-    end
-    class MF < CcTld #:nodoc:
-      self.tld = %q{mf}
-    end
-    class BV < CcTld #:nodoc:
-      self.tld = %q{bv}
-    end
-    class GB < CcTld #:nodoc:
-      self.tld = %q{gb}
-    end
-    class PM < CcTld #:nodoc:
-      self.tld = %q{pm}
-    end
-    class SJ < CcTld #:nodoc:
-      self.tld = %q{sj}
-    end
-    class SO < CcTld #:nodoc:
-      self.tld = %q{so}
-    end
-    class YT < CcTld #:nodoc:
-      self.tld = %q{yt}
-    end
-    class TP < CcTld #:nodoc:
-      self.tld = %q{tp}
-    end
-    class YU < CcTld #:nodoc:
-      self.tld = %q{yu}
-    end
-    class CS < CcTld #:nodoc:
-      self.tld = %q{cs}
-    end
-    class DD < CcTld #:nodoc:
-      self.tld = %q{dd}
-    end
-    class ZR < CcTld #:nodoc:
-      self.tld = %q{zr}
     end
   end # end CcTld
 end # end TLD
