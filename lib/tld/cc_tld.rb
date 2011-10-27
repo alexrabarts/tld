@@ -747,5 +747,32 @@ class TLD
     class ZW < CcTld #:nodoc:
       self.tld = %q{zw}
     end
+    class AC < CcTld #:nodoc:
+      self.tld = %q{ac}
+    end
+    class EU < CcTld #:nodoc:
+      self.tld = %q{eu}
+    end
+    class SU < CcTld #:nodoc:
+      self.tld = %q{su}
+    end
+    class UK < CcTld #:nodoc:
+      self.tld = %q{uk}
+    end
+    class AN < CcTld #:nodoc:
+      self.tld = %q{an}
+    end
+    class YU < CcTld #:nodoc:
+      self.tld = %q{yu}
+    end
+    class TP < CcTld #:nodoc:
+      self.tld = %q{tp}
+    end
+    class YU < CcTld #:nodoc:
+      self.tld = %q{yu}
+    end
+    class ZR < CcTld #:nodoc:
+      self.tld = %q{zr}
+    end
   end # end CcTld
 end # end TLD

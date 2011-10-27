@@ -14,20 +14,39 @@ class TLD
       def self.get
         tlds = []
         doc  = Nokogiri::HTML.parse(open('http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'))
+
+        # Officially assigned code elements
         node = doc.search('#Officially_assigned_code_elements').first.parent
+        tlds.concat parse_from_next_sibling_table(node, 3)
+
+        # Exceptional reservations
+        node = doc.search('#Exceptional_reservations').first.parent
+        tlds.concat parse_from_next_sibling_table(node, 2)
+
+        # Transitional reservations
+        node = doc.search('#Transitional_reservations').first.parent
+        tlds.concat parse_from_next_sibling_table(node, 3)
+
+        Task.to_ruby(tlds, 'CcTld', :cc)
+      end
+
+      def self.parse_from_next_sibling_table(node, td_index)
+        tlds = []
+
         while node = node.next_sibling
           break if node.name == 'table'
         end
+
         node.search('tr').each do |tr|
           tr.search('td').each_with_index do |td, index|
-            next unless index == 3
+            next unless index == td_index
             tld = td.search('a').text.upcase.gsub(/^\./, '')
             next unless tld.match(/^\w\w$/)
             tlds.push(tld)
           end
         end
 
-        Task.to_ruby(tlds, 'CcTld', :cc)
+        tlds
       end
     end # end UpdateCcTlds
   
