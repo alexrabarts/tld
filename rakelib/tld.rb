@@ -1,6 +1,6 @@
-require 'hpricot'
 require 'open-uri'
 require 'erubis'
+require 'nokogiri'
 
 class TLD
   module Task
@@ -13,25 +13,18 @@ class TLD
     module UpdateCcTlds
       def self.get
         tlds = []
-        node    = nil
-        doc     = Hpricot(open('http://en.wikipedia.org/wiki/Country_code_top-level_domain').read)
-        nodes   = doc.search('strong.selflink')
-        found   = false
-
-        nodes.each do |n|
-          node = n
-          if node.inner_html == 'Country code top-level domains'
-            found = true
-            break
-          end
+        doc  = Nokogiri::HTML.parse(open('http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'))
+        node = doc.search('#Officially_assigned_code_elements').first.parent
+        while node = node.next_sibling
+          break if node.name == 'table'
         end
-
-        return nil unless found
-        node.parent.parent.parent.next_sibling.next_sibling.search('a').each do |a|
-          tld = a.inner_text.upcase
-          tld.slice!(0) # Remove the leading '.'
-          break unless tld.match(/^\w\w$/)
-          tlds.push(tld)
+        node.search('tr').each do |tr|
+          tr.search('td').each_with_index do |td, index|
+            next unless index == 3
+            tld = td.search('a').text.upcase.gsub(/^\./, '')
+            next unless tld.match(/^\w\w$/)
+            tlds.push(tld)
+          end
         end
 
         Task.to_ruby(tlds, 'CcTld', :cc)
@@ -42,18 +35,18 @@ class TLD
       def self.get(inner_text_match)
         tlds = []
         node = nil
-        doc  = Hpricot(open('http://en.wikipedia.org/wiki/Top-level_domain').read)
+        doc  = Nokogiri::HTML.parse(open('http://en.wikipedia.org/wiki/Top-level_domain'))
         seen = {}
         doc.search('table.nowraplinks.navbox-subgroup tr').each do |tr|
           tr.search('td').each do |td|
-            if td.inner_text == inner_text_match
-              td = td.next_sibling
-              td.search('a').each do |a|
-                tld = a.inner_text.upcase
-                next if seen[tld]
-                seen[tld] = true
-                tld.slice!(0) # Remove the leading '.'
-                tlds.push(tld)
+            if td.text == inner_text_match
+              while td = td.next_sibling
+                td.search('a').each do |a|
+                  tld = a.text.upcase.gsub(/^\./, '')
+                  next if seen[tld]
+                  seen[tld] = true
+                  tlds.push(tld)
+                end
               end
             end
           end
@@ -65,7 +58,7 @@ class TLD
 
     module UpdateGenericTlds
       def self.get
-        Task.to_ruby(Task::UpdateNonCcTlds.get('Generic'), 'GenericTld', :generic)
+        Task.to_ruby(Task::UpdateNonCcTlds.get('General'), 'GenericTld', :generic)
       end
     end # end UpdateGenericTlds
 

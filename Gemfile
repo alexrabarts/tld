@@ -5,7 +5,7 @@ gem 'rdoc'
 
 group :development do
   gem 'jeweler'
-  gem 'hpricot'
+  gem 'nokogiri'
   gem 'erubis'
   gem 'addressable'
   gem 'iso_country_codes'
