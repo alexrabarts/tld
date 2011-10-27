@@ -1,6 +1,6 @@
-namespace :update do
+namespace :tlds do
   desc "Create CcTld classes from Wikipedia's list of ccTLDs."
-  task :tlds do
+  task :update do
     dirname            = File.dirname(__FILE__)
     gen                = File.join(dirname, %w{tld.rb})
     cc_lib             = File.expand_path(File.join(dirname, %w{.. lib tld cc_tld.rb}))
