@@ -36,10 +36,6 @@ descriptive name, associated currency code and the TLD category.
   TLD.has_valid_tld?('foo.com.au') # => true
   TLD.has_valid_tld?('foo.bar')    # => false
 
-== REQUIREMENTS:
-
-iso_country_codes gem (see http://github.com/alexrabarts/iso_country_codes)
-
 == INSTALL:
 
   gem install tld
@@ -48,7 +44,7 @@ iso_country_codes gem (see http://github.com/alexrabarts/iso_country_codes)
 
 (The MIT License)
 
-Copyright (c) 2008 Stateless Systems (http://statelesssystems.com)
+Copyright (c) 2011 Stateless Systems (http://statelesssystems.com)
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
