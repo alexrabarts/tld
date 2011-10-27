@@ -1,3 +1,7 @@
+=== 0.6.2 / 2011-10-27
+
+* Updated TLDs
+
 === 0.6.1 / 2010-05-20
 
 * Now raises TLD::UnkownTldError instead of Addressable::URI::InvalidURIError
