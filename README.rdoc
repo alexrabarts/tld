@@ -42,7 +42,7 @@ iso_country_codes gem (see http://github.com/alexrabarts/iso_country_codes)
 
 == INSTALL:
 
-  gem install alexrabarts-tld -s http://gems.github.com
+  gem install tld
 
 == LICENSE:
 
