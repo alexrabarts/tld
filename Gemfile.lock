@@ -1,0 +1,30 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    addressable (2.2.6)
+    erubis (2.7.0)
+    git (1.2.5)
+    hpricot (0.8.4)
+    iso_country_codes (0.2.3)
+      rake
+      rdoc
+    jeweler (1.6.4)
+      bundler (~> 1.0)
+      git (>= 1.2.5)
+      rake
+    json (1.6.1)
+    rake (0.9.2.2)
+    rdoc (3.11)
+      json (~> 1.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  addressable
+  erubis
+  hpricot
+  iso_country_codes
+  jeweler
+  rake
+  rdoc
