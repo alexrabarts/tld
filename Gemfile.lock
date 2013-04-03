@@ -1,10 +1,9 @@
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     addressable (2.2.6)
     erubis (2.7.0)
     git (1.2.5)
-    hpricot (0.8.4)
     iso_country_codes (0.2.3)
       rake
       rdoc
@@ -24,7 +23,6 @@ PLATFORMS
 DEPENDENCIES
   addressable
   erubis
-  hpricot
   iso_country_codes
   jeweler
   nokogiri
