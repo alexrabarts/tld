@@ -1,3 +1,8 @@
+=== 0.6.4 / 2013-04-03
+
+* Fixed a gem dependency issue
+* Removed Jeweler as a dependecy in development
+
 === 0.6.3 / 2011-10-27
 
 * Fixed missing exceptional and transitional TLDs
