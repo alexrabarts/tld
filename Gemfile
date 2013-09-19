@@ -9,4 +9,8 @@ group :development do
   gem 'addressable'
 end
 
+group :test do
+  gem 'shoulda'
+end
+
 gemspec
