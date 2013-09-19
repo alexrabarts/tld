@@ -3,10 +3,11 @@ source 'https://rubygems.org'
 gem 'rake'
 gem 'rdoc'
 
+gemspec
+
 group :development do
   gem 'nokogiri'
   gem 'erubis'
-  gem 'addressable'
 end
 
 group :test do

@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/alexrabarts/tld}
   s.require_paths = ['lib']
 
-  ['iso_country_codes'].each do |gem|
+  %w{addressable iso_country_codes}.each do |gem|
     s.add_dependency *gem.split(' ')
   end
 end
