@@ -1,8 +1,8 @@
-require 'test/unit'
+require 'minitest/autorun'
 require 'tld'
 require 'shoulda'
 
-class TestTld < Test::Unit::TestCase
+class TestTld < Minitest::Test
   should 'find TLD by exact match' do
     assert_equal 'au', TLD.find('au').tld
   end
