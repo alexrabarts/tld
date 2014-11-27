@@ -10,105 +10,72 @@ class TLD
       eruby.result(:tlds => tlds, :klass => klass, :type => type)
     end
 
-    module UpdateCcTlds
-      def self.get
+    module UpdateIanaTlds
+      def self.get type
         tlds = []
-        doc  = Nokogiri::HTML.parse(open('http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'))
+        doc = Nokogiri::HTML.parse open('http://www.iana.org/domains/root/db')
 
-        # Officially assigned code elements
-        node = doc.search('#Officially_assigned_code_elements').first.parent
-        tlds.concat parse_from_next_sibling_table(node, 3)
+        rows = doc.search('#tld-table tbody tr')
 
-        # Exceptional reservations
-        node = doc.search('#Exceptional_reservations').first.parent
-        tlds.concat parse_from_next_sibling_table(node, 2)
+        rows.each do |tr|
+          tld = this_type = sponsoring_organization = nil
 
-        # Transitional reservations
-        node = doc.search('#Transitional_reservations').first.parent
-        tlds.concat parse_from_next_sibling_table(node, 3)
-
-        Task.to_ruby(tlds, 'CcTld', :cc)
-      end
-
-      def self.parse_from_next_sibling_table(node, td_index)
-        tlds = []
-
-        while node = node.next_sibling
-          break if node.name == 'table'
-        end
-
-        node.search('tr').each do |tr|
           tr.search('td').each_with_index do |td, index|
-            next unless index == td_index
-            tld = td.search('a').text.upcase.gsub(/^\./, '')
-            next unless tld.match(/^\w\w$/)
-            tlds.push(tld)
-          end
-        end
+            text = td.text.strip
 
-        tlds
-      end
-    end # end UpdateCcTlds
-  
-    module UpdateNonCcTlds
-      def self.get(inner_text_match)
-        tlds = []
-        node = nil
-        doc  = Nokogiri::HTML.parse(open('http://en.wikipedia.org/wiki/Top-level_domain'))
-        seen = {}
-        doc.search('table.nowraplinks.navbox-subgroup tr').each do |tr|
-          tr.search('td').each do |td|
-            if td.text == inner_text_match
-              while td = td.next_sibling
-                td.search('a').each do |a|
-                  tld = a.text.upcase.gsub(/^\./, '')
-                  next if seen[tld]
-                  seen[tld] = true
-                  tlds.push(tld)
-                end
-              end
+            case index
+            when 0
+              tld = text.gsub(/^\./, '')
+            when 1
+              this_type = text
+            when 2
+              sponsoring_organization = text.gsub(/[\n\r]?/, '')
             end
           end
+
+          if type == this_type
+            tlds << {tld: tld, sponsoring_organization: sponsoring_organization}
+          end
         end
 
-        tlds
+        return tlds
       end
     end
 
-    module UpdateGenericTlds
+    module UpdateCountryCodeTLDs
       def self.get
-        Task.to_ruby(Task::UpdateNonCcTlds.get('General'), 'GenericTld', :generic)
+        Task.to_ruby(Task::UpdateIanaTlds.get('country-code'), 'CC', :cc)
       end
-    end # end UpdateGenericTlds
+    end # end UpdateCountryCodeTLDs
 
-    module UpdateInfrastructureTlds
+    module UpdateGenericTLDs
       def self.get
-        Task.to_ruby(Task::UpdateNonCcTlds.get('Infrastructure'), 'InfrastructureTld', :infrastructure)
+        Task.to_ruby(Task::UpdateIanaTlds.get('generic'), 'Generic', :generic)
       end
-    end # end UpdateInfrastructureTlds
+    end # end UpdateGenericTLDs
 
-    module UpdatePseudoTlds
+    module UpdateGenericRestrictedTLDs
       def self.get
-        Task.to_ruby(Task::UpdateNonCcTlds.get('Pseudo'), 'PseudoTld', :pseudo)
+        Task.to_ruby(Task::UpdateIanaTlds.get('generic-restricted'), 'GenericRestricted', :generic_restricted)
       end
-    end # end UpdatePseudoTlds
+    end # end UpdateGenericRestrictedTLDs
 
-    module UpdateReservedTlds
+    module UpdateTestTLDs
       def self.get
-        Task.to_ruby(Task::UpdateNonCcTlds.get('Reserved'), 'ReservedTld', :reserved)
+        Task.to_ruby(Task::UpdateIanaTlds.get('test'), 'Test', :test)
       end
-    end # end UpdateReservedTlds
+    end # end UpdateTestTLDs
 
-    module UpdateRetiredTlds
+    module UpdateInfrastructureTLDs
       def self.get
-        Task.to_ruby(Task::UpdateNonCcTlds.get('Deleted/retired'), 'RetiredTld', :retired)
+        Task.to_ruby(Task::UpdateIanaTlds.get('infrastructure'), 'Infrastructure', :infrastructure)
       end
-    end # end UpdateRetiredTlds
+    end # end UpdateInfrastructureTLDs
 
-    module UpdateSponsoredTlds
+    module UpdateSponsoredTLDs
       def self.get
-        Task.to_ruby(Task::UpdateNonCcTlds.get('Sponsored'), 'SponsoredTld', :sponsored)
+        Task.to_ruby(Task::UpdateIanaTlds.get('sponsored'), 'Sponsored', :sponsored)
       end
-    end # end UpdateSponsoredTlds
+    end # end UpdateSponsoredTLDs
   end # Task
 end # TLD

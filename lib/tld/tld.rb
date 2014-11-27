@@ -13,7 +13,7 @@ class TLD
 
   include Singleton
 
-  class UnknownTldError < StandardError; end
+  class UnknownTLDError < StandardError; end
 
   def to_s
     tld
@@ -21,6 +21,10 @@ class TLD
 
   def tld
     self.class.tld
+  end
+
+  def sponsoring_organization
+    self.class.sponsoring_organization
   end
 
   def name
@@ -44,7 +48,7 @@ class TLD
   end
 
   class << self
-    attr_accessor :tld
+    attr_accessor :tld, :sponsoring_organization
 
     @@tlds = []
 
@@ -81,7 +85,7 @@ class TLD
       last     = host.match(/\./) ? host.split('.').last : host # Take the last one of foo.bar.baz
       instance = all.select { |t| t.tld == last }.first
 
-      raise UnknownTldError, "TLD '#{str}' unkown." if instance.nil?
+      raise UnknownTLDError, "TLD '#{str}' unkown." if instance.nil?
 
       instance
     end

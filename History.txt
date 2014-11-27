@@ -1,3 +1,11 @@
+=== 0.7.0 / 2014-11-27
+
+* IANA is now the authority source of TLDs instead of Wikipedia
+* Updated TLDs
+* Added `TLD#sponsoring_organization` method
+* All TLD subclasses now start with 'TLD' in order to accommodate non-ASCII TLDs
+* `TLD::UnknownTldError` has been renamed `UnknownTLDError`
+
 === 0.6.4 / 2013-04-03
 
 * Fixed a gem dependency issue

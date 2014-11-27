@@ -49,14 +49,14 @@ class TestTld < Minitest::Test
     assert_equal tld.tld, tld.to_s
   end
 
-  should 'com should map to empty currency (not Comoros)' do
+  should 'map .com to empty currency (not Comoros)' do
     assert_equal [], TLD.find('com').currencies
     assert_nil TLD.find('com').currency
   end
 
   should 'raise exception when TLD is unknown' do
-    assert_raises TLD::UnknownTldError do
-      TLD.find('foo')
+    assert_raises TLD::UnknownTLDError do
+      TLD.find('foobar')
     end
   end
 
@@ -72,15 +72,16 @@ class TestTld < Minitest::Test
   should 'confirm that hostname has a valid TLD' do
     assert TLD.has_valid_tld?('foo.com.au')
     assert TLD.has_valid_tld?('http://foo.com.au/bar')
+    assert TLD.has_valid_tld?('Techno.Trading.House')
   end
 
   should 'confirm that hostname does not have a valid TLD' do
-    assert_equal false, TLD.has_valid_tld?('foo.bar')
-    assert_equal false, TLD.has_valid_tld?('http://foo.bar')
+    assert_equal false, TLD.has_valid_tld?('foo.barbaz')
+    assert_equal false, TLD.has_valid_tld?('http://foo.barbaz')
   end
 
-  should 'raise UnknownTldError if string cannot be parsed by Addressable::URI' do
-    assert_raises TLD::UnknownTldError do
+  should 'raise UnknownTLDError if string cannot be parsed by Addressable::URI' do
+    assert_raises TLD::UnknownTLDError do
       TLD.find('foo:')
     end
   end

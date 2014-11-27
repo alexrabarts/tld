@@ -4,8 +4,9 @@ class TLD
       :<%= type %>
     end
     <% tlds.each do |tld| -%>
-    class <%= tld %> < <%= klass %> #:nodoc:
-      self.tld = %q{<%= tld.downcase %>}
+    class TLD<%= tld[:tld].split(/(\W)/).map(&:capitalize).join %> < <%= klass %> #:nodoc:
+      self.tld = %q{<%= tld[:tld].downcase %>}
+      self.sponsoring_organization = %q{<%= tld[:sponsoring_organization] %>}
     end
     <% end -%>
   end # end <%= klass %>
