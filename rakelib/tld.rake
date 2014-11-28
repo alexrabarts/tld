@@ -1,5 +1,5 @@
 namespace :tlds do
-  desc "Create CcTld classes from Wikipedia's list of ccTLDs."
+  desc "Create TLD classes using data from IANA."
   task :update do
     dirname                = File.dirname(__FILE__)
     gen                    = File.join(dirname, %w{tld.rb})
