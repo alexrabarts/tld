@@ -1,9 +1,10 @@
 class TLD
-  class RetiredTld < TLD
+  class Retired < TLD
     def type
       :retired
     end
-    class NATO < RetiredTld #:nodoc:
+
+    class TLDNato < Retired #:nodoc:
       self.tld = %q{nato}
     end
   end # end RetiredTld

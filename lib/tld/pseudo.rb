@@ -1,28 +1,35 @@
 class TLD
-  class PseudoTld < TLD
+  class Pseudo < TLD
     def type
       :pseudo
     end
-    class BITNET < PseudoTld #:nodoc:
+
+    class TLDBitnet < Pseudo #:nodoc:
       self.tld = %q{bitnet}
     end
-    class CSNET < PseudoTld #:nodoc:
+
+    class TLDCsnet < Pseudo #:nodoc:
       self.tld = %q{csnet}
     end
-    class LOCAL < PseudoTld #:nodoc:
+
+    class TLDLocal < Pseudo #:nodoc:
       self.tld = %q{local}
     end
-    class ROOT < PseudoTld #:nodoc:
+
+    class TLDRoot < Pseudo #:nodoc:
       self.tld = %q{root}
     end
-    class UUCP < PseudoTld #:nodoc:
+
+    class TLDUucp < Pseudo #:nodoc:
       self.tld = %q{uucp}
     end
-    class ONION < PseudoTld #:nodoc:
+
+    class TLDOnion < Pseudo #:nodoc:
       self.tld = %q{onion}
     end
-    class EXIT < PseudoTld #:nodoc:
+
+    class TLDExit < Pseudo #:nodoc:
       self.tld = %q{exit}
     end
-  end # end PseudoTld
+  end # end Pseudo
 end # end TLD

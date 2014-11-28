@@ -1,3 +1,8 @@
+=== 0.7.1 / 2014-11-27
+
+* Updated class names for pseudo, reserverd and retired TLDs
+* Officially removed suport for Ruby < 2.0
+
 === 0.7.0 / 2014-11-27
 
 * IANA is now the authority source of TLDs instead of Wikipedia
